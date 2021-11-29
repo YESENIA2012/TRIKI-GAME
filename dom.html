@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>DOM</title>
+    </head>
+    <body>
+        <ul id="lista">
+            <li>Item 1</li>
+            <li id="item2">Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <script>
+           /*  creo el elemento */
+           /* var li = document.createElement("li") */
+           /* obtiene el documento */
+            var li = document.getElementById("item2");
+
+            /* crear atributo */
+            var atributo = document.createAttribute("style");
+            /* colocarle valor a un atributo */
+            atributo.nodeValue = "color: red";
+            /* colocar atributo a li */
+            li.setAttributeNode(atributo);
+
+            /* var string = document.createTextNode("Item 4") */
+
+           /*  le agrego el string al elemento */
+           /*  li.appendChild(string); */
+            /* var lista = document.getElementById("lista"); */
+            /* lista.removeChild(li) */
+        </script>
+    </body>
+</html>

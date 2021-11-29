@@ -1,0 +1,15 @@
+.madre {
+  display: inline-block;
+}
+
+.column-1,
+.column-2,
+.column-3 {
+  text-align: center;
+  display: inline-block;
+  height: 96px;
+  width: 96px;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  border: 1px solid black;
+}

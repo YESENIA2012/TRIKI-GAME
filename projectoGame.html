@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Proyecto Game</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="proyectoGame.css">
+    </head>
+    <body>
+        <h1>JUGANDO TRIKI TRAKI</h1>
+        <h2>Vamos a jugar</h2>
+
+
+        <div>
+            <button id="myBtn">Click Me</button>
+        </div>
+        
+
+        <form>
+            <label for="filas">Inserte el número de filas</label>
+            <input type="number" id="filas" name="numFilas">
+            <br>
+            <label for="columnas">Insete el número de columnas</label>
+            <input type="number" id="columnas" name="numColumnas">
+            <br>
+            <button type="button" onclick="crearMatriz()">Insertar filas y columnas</button>
+        </form>
+        <br>
+        <br>
+
+        <script src="proyectoGame.js"></script>
+    </body>
+</html>

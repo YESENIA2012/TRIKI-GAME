@@ -1,4 +1,5 @@
-function drawGameArray(scoresMatriz, numRows, numColumns) {
+function drawGame(numRows, numColumns) {
+  var scoresMatriz = [];
   for (a = 0; a < numRows; a++) {
     let divPadre = document.querySelector(".padre");
     let rowElement = document.createElement("div");
@@ -26,17 +27,17 @@ function drawGameArray(scoresMatriz, numRows, numColumns) {
       scoresMatriz[a][b] = "";
     }
   }
+  return scoresMatriz;
 }
-
-function recorrerDiagonal(array) {
+function recorrerDiagonal(scores) {
   let ganador = false;
   let contadorX = 0;
   let contadorO = 0;
-  let contadorXDiagSecundaria = 0;
-  let contadorODiagSecundaria = 0;
+  let contadorXDiagSecundaria = 1;
+  let contadorODiagSecundaria = 1;
 
-  for (contador = 0; contador < array.length; contador++) {
-    let fila = array[contador];
+  for (contador = 0; contador < scores.length; contador++) {
+    let fila = scores[contador];
 
     for (
       contador2 = 0;
@@ -46,15 +47,15 @@ function recorrerDiagonal(array) {
       let columna = fila[contador2];
 
       if (contador == contador2) {
-        if (array[contador][contador2] != "") {
+        if (scores[contador][contador2] != "") {
           if (columna == "X") {
             contadorX = contadorX + 1;
           } else if (columna == "O") {
             contadorO = contadorO + 1;
           }
         }
-      } else if (contador + contador2 == array.length - 1) {
-        if (array[contador][contador2] != "") {
+      } else if (contador + contador2 == scores.length - 1) {
+        if (scores[contador][contador2] != "") {
           if (columna == "X") {
             contadorXDiagSecundaria = contadorXDiagSecundaria + 1;
           } else if (columna == "O") {
@@ -64,18 +65,29 @@ function recorrerDiagonal(array) {
       }
     }
   }
-
-  if (contadorX == array.length) {
+  if (contadorX == scores.length) {
     console.log("El ganador es el jugador X DIAGONALES");
+    var exponerGanador = document.querySelector(".ganador");
+    var textGnanador = document.createTextNode("EL GANADOR ES EL JUGADOR X");
+    exponerGanador.appendChild(textGnanador);
     ganador = true;
-  } else if (contadorO == array.length) {
+  } else if (contadorO == scores.length) {
     console.log("El ganador es el jugador O DIAGONALES");
+    var exponerGanador = document.querySelector(".ganador");
+    var textGnanador = document.createTextNode("EL GANADOR ES EL JUGADOR O");
+    exponerGanador.appendChild(textGnanador);
     ganador = true;
-  } else if (contadorXDiagSecundaria == array.length) {
+  } else if (contadorXDiagSecundaria == scores.length) {
     console.log("El ganador es el jugador X DIAGONALES");
+    var exponerGanador = document.querySelector(".ganador");
+    var textGnanador = document.createTextNode("EL GANADOR ES EL JUGADOR X");
+    exponerGanador.appendChild(textGnanador);
     ganador = true;
-  } else if (contadorODiagSecundaria == array.length) {
+  } else if (contadorODiagSecundaria == scores.length) {
     console.log("El ganador es el jugador O DIAGONALES");
+    var exponerGanador = document.querySelector(".ganador");
+    var textGnanador = document.createTextNode("EL GANADOR ES EL JUGADOR O");
+    exponerGanador.appendChild(textGnanador);
     ganador = true;
   } else {
     ganador = false;
@@ -83,13 +95,13 @@ function recorrerDiagonal(array) {
   return ganador;
 }
 
-function recorrerFilas(array) {
+function recorrerFila(scores) {
   let ganador = false;
   let contadorX = 0;
   let contadorO = 0;
 
-  for (contador = 0; contador < array.length; contador++) {
-    var fila = array[contador];
+  for (contador = 0; contador < scores.length; contador++) {
+    var fila = scores[contador];
 
     for (
       contador2 = 0;
@@ -102,13 +114,23 @@ function recorrerFilas(array) {
         if (columna == "X") {
           contadorX = contadorX + 1;
           if (contadorX == fila.length) {
-            console.log("El ganador ez jugador X FILAS");
+            console.log("El ganador es el jugador X FILAS");
+            var exponerGanador = document.querySelector(".ganador");
+            var textGnanador = document.createTextNode(
+              "EL GANADOR ES EL JUGADOR X"
+            );
+            exponerGanador.appendChild(textGnanador);
             ganador = true;
           }
         } else if (columna == "O") {
           contadorO = contadorO + 1;
           if (contadorO == fila.length) {
-            console.log("El ganador ez jugador O FILAS");
+            console.log("El ganador es el jugador O FILAS");
+            var exponerGanador = document.querySelector(".ganador");
+            var textGnanador = document.createTextNode(
+              "EL GANADOR ES EL JUGADOR O"
+            );
+            exponerGanador.appendChild(textGnanador);
             ganador = true;
           }
         } else {
@@ -122,33 +144,43 @@ function recorrerFilas(array) {
   return ganador;
 }
 
-function recorrerColumnas(array) {
+function recorrerColumna(scores) {
   let ganador = false;
   let contadorX = 0;
   let contadorO = 0;
   let contador = 0;
   let contador2 = 0;
 
-  while (contador2 < array.length && ganador == false) {
-    columna = array[contador][contador2];
+  while (contador2 < scores.length && ganador == false) {
+    columna = scores[contador][contador2];
 
     if (columna != "") {
       if (columna == "X") {
         contadorX = contadorX + 1;
-        if (contadorX == array.length) {
+        if (contadorX == scores.length) {
           console.log("El ganador es el jugador X COLUMNAS");
+          var exponerGanador = document.querySelector(".ganador");
+          var textGnanador = document.createTextNode(
+            "EL GANADOR ES EL JUGADOR X"
+          );
+          exponerGanador.appendChild(textGnanador);
           ganador = true;
         }
       } else if (columna == "O") {
         contadorO = contadorO + 1;
-        if (contadorO == array.length) {
+        if (contadorO == scores.length) {
           console.log("El ganador es el jugador O COLUMNAS");
+          var exponerGanador = document.querySelector(".ganador");
+          var textGnanador = document.createTextNode(
+            "EL GANADOR ES EL JUGADOR O"
+          );
+          exponerGanador.appendChild(textGnanador);
           ganador = true;
         }
       }
     }
     contador = contador + 1;
-    if (contador == array.length) {
+    if (contador == scores.length) {
       contador = 0;
       contadorX = 0;
       contadorO = 0;

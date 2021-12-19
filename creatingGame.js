@@ -20,6 +20,7 @@ function matriz() {
   let numColumns = document.getElementById("columnas").value;
 
   let scores = drawGame(numRows, numColumns);
+  let winnerMessage = "";
 
   let padre = document.querySelector(".padre");
   padre.addEventListener("click", insertarX);
@@ -32,15 +33,8 @@ function matriz() {
     let movementPosition = atributosImagen.split("-");
     let row = movementPosition[1];
     let column = movementPosition[2];
-    var recorrerDiagonales = recorrerDiagonal(scores);
-    var recorrerFilas = recorrerFila(scores);
-    var recorrerColumnas = recorrerColumna(scores);
 
-    if (
-      recorrerDiagonales == false &&
-      recorrerFilas == false &&
-      recorrerColumnas == false
-    ) {
+    if (winnerMessage == "") {
       if (imagen.hasAttribute("src")) {
         alert("La columna ya esta en uso");
       } else {
@@ -49,17 +43,19 @@ function matriz() {
           imagen.src = "x-icon.png";
           turno = jugador2;
           scores[row][column] = "X";
-          let recorrerDiagonales = recorrerDiagonal(scores);
-          let recorrerFilas = recorrerFila(scores);
-          let recorrerColumnas = recorrerColumna(scores);
+          winnerMessage = getWinnerMessage(scores);
         } else {
           imagen.style.opacity = "1";
           imagen.src = "o2-icon.png";
           turno = jugador1;
           scores[row][column] = "O";
-          let recorrerDiagonales = recorrerDiagonal(scores);
-          let recorrerFilas = recorrerFila(scores);
-          let recorrerColumnas = recorrerColumna(scores);
+          winnerMessage = getWinnerMessage(scores);
+        }
+
+        if (winnerMessage) {
+          var exponerGanador = document.querySelector(".ganador");
+          var textGnanador = document.createTextNode(winnerMessage);
+          exponerGanador.appendChild(textGnanador);
         }
       }
     }

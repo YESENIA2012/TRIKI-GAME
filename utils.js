@@ -1,4 +1,5 @@
 function drawGame(numRows, numColumns) {
+  var positionsCunter = 0;
   var scoresMatriz = [];
   for (a = 0; a < numRows; a++) {
     let divPadre = document.querySelector(".padre");
@@ -25,16 +26,17 @@ function drawGame(numRows, numColumns) {
       rowElement.appendChild(columnElement);
 
       scoresMatriz[a][b] = "";
+      positionsCunter = positionsCunter + 1;
     }
   }
-  return scoresMatriz;
+  return { scoresMatriz: scoresMatriz, positionsCunter: positionsCunter };
 }
 function findWinnerInDiagonals(scores) {
   let ganador = false;
   let contadorX = 0;
   let contadorO = 0;
-  let contadorXDiagSecundaria = 1;
-  let contadorODiagSecundaria = 1;
+  let contadorXDiagSecundaria = 0;
+  let contadorODiagSecundaria = 0;
   let winnerPlayer = 0;
 
   for (contador = 0; contador < scores.length; contador++) {
@@ -48,20 +50,18 @@ function findWinnerInDiagonals(scores) {
       let columna = fila[contador2];
 
       if (contador == contador2) {
-        if (scores[contador][contador2] != "") {
-          if (columna == "X") {
-            contadorX = contadorX + 1;
-          } else if (columna == "O") {
-            contadorO = contadorO + 1;
-          }
+        if (columna == "X") {
+          contadorX = contadorX + 1;
+        } else if (columna == "O") {
+          contadorO = contadorO + 1;
         }
-      } else if (contador + contador2 == scores.length - 1) {
-        if (scores[contador][contador2] != "") {
-          if (columna == "X") {
-            contadorXDiagSecundaria = contadorXDiagSecundaria + 1;
-          } else if (columna == "O") {
-            contadorODiagSecundaria = contadorODiagSecundaria + 1;
-          }
+      }
+
+      if (contador + contador2 == scores.length - 1) {
+        if (columna == "X") {
+          contadorXDiagSecundaria = contadorXDiagSecundaria + 1;
+        } else if (columna == "O") {
+          contadorODiagSecundaria = contadorODiagSecundaria + 1;
         }
       }
     }
@@ -173,7 +173,6 @@ function getWinnerMessage(scores) {
   let recorrerDiagonales = findWinnerInDiagonals(scores);
   let recorrerFilas = findWinnerInRows(scores);
   let recorrerColumnas = findWinnerInColumns(scores);
-
   if (recorrerDiagonales.winner) {
     if (recorrerDiagonales.winnerPlayer == "X") {
       return "EL GANADOR ES EL JUGADOR X";
@@ -183,7 +182,7 @@ function getWinnerMessage(scores) {
   }
 
   if (recorrerFilas.winner) {
-    if (recorrerFilas.winnerPlayer == "x") {
+    if (recorrerFilas.winnerPlayer == "X") {
       return "EL GANADOR ES EL JUGADOR X";
     } else {
       return "EL GANADOR ES EL JUGADOR O";
@@ -197,6 +196,5 @@ function getWinnerMessage(scores) {
       return "EL GANADOR ES EL JUGADOR O";
     }
   }
-
   return "";
 }

@@ -19,15 +19,20 @@ function matriz() {
   let numRows = document.getElementById("filas").value;
   let numColumns = document.getElementById("columnas").value;
 
-  let scores = drawGame(numRows, numColumns);
+  let game = drawGame(numRows, numColumns);
+  let scores = game.scoresMatriz;
+  let positionsCunter = game.positionsCunter;
+
   let winnerMessage = "";
 
   let padre = document.querySelector(".padre");
   padre.addEventListener("click", insertarX);
 
   var turno = jugador1;
+  let playCounter = 0;
 
   function insertarX(evento) {
+    playCounter = playCounter + 1;
     let imagen = evento.target;
     let atributosImagen = imagen.getAttribute("class");
     let movementPosition = atributosImagen.split("-");
@@ -57,6 +62,13 @@ function matriz() {
           var textGnanador = document.createTextNode(winnerMessage);
           exponerGanador.appendChild(textGnanador);
         }
+      }
+    }
+    if (playCounter == positionsCunter) {
+      if (winnerMessage == "") {
+        var exponerGanador = document.querySelector(".ganador");
+        var textGnanador = document.createTextNode("NO HAY UN GANADOR");
+        exponerGanador.appendChild(textGnanador);
       }
     }
   }

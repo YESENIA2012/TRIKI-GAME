@@ -31,7 +31,9 @@ h2 {
 input[type="number"] {
   width: 40px;
 }
-
+.row {
+  text-align: center;
+}
 .column {
   height: 120px;
   width: 120px;

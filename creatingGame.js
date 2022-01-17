@@ -1,74 +1,73 @@
 function matriz() {
-  let players = document.querySelector(".jugadores");
-  let jugador1 = document.createElement("div");
-  let attJugador1 = document.createAttribute("class");
-  attJugador1.value = "jugador1";
-  jugador1.setAttributeNode(attJugador1);
-  let textoJugador1 = document.createTextNode("JUGADOR X");
-  jugador1.appendChild(textoJugador1);
-  players.appendChild(jugador1);
+  let players = document.querySelector(".players");
+  let player1 = document.createElement("div");
+  let attplayer1 = document.createAttribute("class");
+  attplayer1.value = "player1";
+  player1.setAttributeNode(attplayer1);
+  let textPlayer1 = document.createTextNode("JUGADOR X");
+  player1.appendChild(textPlayer1);
+  players.appendChild(player1);
 
-  let jugador2 = document.createElement("div");
-  let attjugador2 = document.createAttribute("class");
-  attjugador2.value = "jugador2";
-  jugador2.setAttributeNode(attjugador2);
-  let textojugador2 = document.createTextNode("JUGADOR O");
-  jugador2.appendChild(textojugador2);
-  players.appendChild(jugador2);
+  let player2 = document.createElement("div");
+  let attplayer2 = document.createAttribute("class");
+  attplayer2.value = "player2";
+  player2.setAttributeNode(attplayer2);
+  let textPlayer2 = document.createTextNode("JUGADOR O");
+  player2.appendChild(textPlayer2);
+  players.appendChild(player2);
 
-  let numRows = document.getElementById("filas").value;
-  let numColumns = document.getElementById("columnas").value;
+  let numRows = document.getElementById("rows").value;
+  let numColumns = document.getElementById("columns").value;
 
-  let game = drawGame(numRows, numColumns);
-  let scores = game.scoresMatriz;
-  let positionsCunter = game.positionsCunter;
+  let dashboardGame = drawGame(numRows, numColumns);
+  let scores = dashboardGame.scoresMatriz;
+  let positionsCunter = dashboardGame.positionsCunter;
 
   let winnerMessage = "";
 
-  let padre = document.querySelector(".padre");
-  padre.addEventListener("click", insertarX);
+  let father = document.querySelector(".father");
+  father.addEventListener("click", insertarX);
 
-  var turno = jugador1;
+  var player = player1;
   let playCounter = 0;
 
   function insertarX(evento) {
     playCounter = playCounter + 1;
-    let imagen = evento.target;
-    let atributosImagen = imagen.getAttribute("class");
-    let movementPosition = atributosImagen.split("-");
+    const image = evento.target;
+    const imageAttributes = image.getAttribute("class");
+    let movementPosition = imageAttributes.split("-");
     let row = movementPosition[1];
     let column = movementPosition[2];
 
     if (winnerMessage == "") {
-      if (imagen.hasAttribute("src")) {
+      if (image.hasAttribute("src")) {
         alert("La columna ya esta en uso");
       } else {
-        if (turno == jugador1) {
-          imagen.style.opacity = "1";
-          imagen.src = "x-icon.png";
-          turno = jugador2;
+        if (player == player1) {
+          image.style.opacity = "1";
+          image.src = "x-icon.png";
+          player = player2;
           scores[row][column] = "X";
           winnerMessage = getWinnerMessage(scores);
         } else {
-          imagen.style.opacity = "1";
-          imagen.src = "o2-icon.png";
-          turno = jugador1;
+          image.style.opacity = "1";
+          image.src = "o2-icon.png";
+          player = player1;
           scores[row][column] = "O";
           winnerMessage = getWinnerMessage(scores);
         }
-
         if (winnerMessage) {
-          var exponerGanador = document.querySelector(".ganador");
-          var textGnanador = document.createTextNode(winnerMessage);
-          exponerGanador.appendChild(textGnanador);
+          var exposeWinner = document.querySelector(".winner");
+          var winnerText = document.createTextNode(winnerMessage);
+          exposeWinner.appendChild(winnerText);
         }
       }
     }
     if (playCounter == positionsCunter) {
       if (winnerMessage == "") {
-        var exponerGanador = document.querySelector(".ganador");
-        var textGnanador = document.createTextNode("NO HAY UN GANADOR");
-        exponerGanador.appendChild(textGnanador);
+        var exposeWinner = document.querySelector(".winner");
+        var winnerText = document.createTextNode("NO HAY UN GANADOR");
+        exposeWinner.appendChild(winnerText);
       }
     }
   }

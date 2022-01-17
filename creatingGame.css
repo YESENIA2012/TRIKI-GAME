@@ -10,18 +10,18 @@ h2 {
   font-family: "Henny Penny", cursive;
   text-align: left;
 }
-.jugador1 {
+.player1 {
   font-family: "Henny Penny", cursive;
   display: inline-block;
   margin-right: 30px;
   font-size: 30px;
 }
-.jugador2 {
+.player2 {
   font-family: "Henny Penny", cursive;
   display: inline-block;
   font-size: 30px;
 }
-.ganador {
+.winner {
   font-size: 60px;
   color: black;
   font-family: "Henny Penny", cursive;

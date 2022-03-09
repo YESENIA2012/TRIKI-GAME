@@ -1,20 +1,8 @@
 function matriz() {
   let players = document.querySelector(".players");
-  let player1 = document.createElement("div");
-  let attplayer1 = document.createAttribute("class");
-  attplayer1.value = "player1";
-  player1.setAttributeNode(attplayer1);
-  let textPlayer1 = document.createTextNode("JUGADOR X");
-  player1.appendChild(textPlayer1);
-  players.appendChild(player1);
-
-  let player2 = document.createElement("div");
-  let attplayer2 = document.createAttribute("class");
-  attplayer2.value = "player2";
-  player2.setAttributeNode(attplayer2);
-  let textPlayer2 = document.createTextNode("JUGADOR O");
-  player2.appendChild(textPlayer2);
-  players.appendChild(player2);
+  let createPlayer = createPlayers(players);
+  let player1 = createPlayer.player1;
+  let player2 = createPlayer.player2;
 
   let numRows = document.getElementById("rows").value;
   let numColumns = document.getElementById("columns").value;

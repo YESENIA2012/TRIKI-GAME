@@ -4,10 +4,10 @@ function matriz() {
   let player1 = createPlayer.player1;
   let player2 = createPlayer.player2;
 
-  let numRows = document.getElementById("rows").value;
-  let numColumns = document.getElementById("columns").value;
+  let rowsNumber = document.getElementById("rows").value;
+  let columnsNumber = document.getElementById("columns").value;
 
-  let dashboardGame = drawGame(numRows, numColumns);
+  let dashboardGame = drawGame(rowsNumber, columnsNumber);
   let scores = dashboardGame.scoresMatriz;
   let positionsCunter = dashboardGame.positionsCunter;
 
@@ -19,9 +19,9 @@ function matriz() {
   var player = player1;
   let playCounter = 0;
 
-  function insertarX(evento) {
+  function insertarX(event) {
     playCounter = playCounter + 1;
-    const image = evento.target;
+    const image = event.target;
     const imageAttributes = image.getAttribute("class");
     let movementPosition = imageAttributes.split("-");
     let row = movementPosition[1];

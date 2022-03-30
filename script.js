@@ -1,61 +1,61 @@
 function matriz() {
-  let players = document.querySelector(".jugadores");
-  let jugador1 = document.createElement("div");
-  let attJugador1 = document.createAttribute("class");
-  attJugador1.value = "jugador1";
-  jugador1.setAttributeNode(attJugador1);
-  let textoJugador1 = document.createTextNode("JUGADOR X");
-  jugador1.appendChild(textoJugador1);
-  players.appendChild(jugador1);
+  let players = document.querySelector(".players");
+  let createPlayer = createPlayers(players);
+  let player1 = createPlayer.player1;
+  let player2 = createPlayer.player2;
 
-  let jugador2 = document.createElement("div");
-  let attjugador2 = document.createAttribute("class");
-  attjugador2.value = "jugador2";
-  jugador2.setAttributeNode(attjugador2);
-  let textojugador2 = document.createTextNode("JUGADOR O");
-  jugador2.appendChild(textojugador2);
-  players.appendChild(jugador2);
+  let rowsNumber = document.getElementById("rows").value;
+  let columnsNumber = document.getElementById("columns").value;
 
-  let numFilas = document.getElementById("filas").value;
-  let numColumnas = document.getElementById("columnas").value;
+  let dashboardGame = drawGame(rowsNumber, columnsNumber);
+  let scores = dashboardGame.scoresMatriz;
+  let positionsCunter = dashboardGame.positionsCunter;
 
-  for (a = 0; a < numFilas; a++) {
-    let divPadre = document.querySelector(".padre");
-    let rowElement = document.createElement("div");
-    let atributo = document.createAttribute("class");
-    atributo.value = "row";
-    rowElement.setAttributeNode(atributo);
-    divPadre.appendChild(rowElement);
+  let winnerMessage = "";
 
-    for (b = 0; b < numColumnas; b++) {
-      let columnElement = document.createElement("div");
-      let atributo2 = document.createAttribute("class");
-      atributo2.value = "column row" + [a + 1] + "-" + "column" + [b + 1];
-      columnElement.setAttributeNode(atributo2);
-      let imagen = document.createElement("img");
-      columnElement.appendChild(imagen);
-      rowElement.appendChild(columnElement);
-    }
-  }
-  let padre = document.querySelector(".padre");
-  padre.addEventListener("click", insertarX);
+  let father = document.querySelector(".father");
+  father.addEventListener("click", insertarX);
 
-  var turno = jugador1;
+  var player = player1;
+  let playCounter = 0;
 
-  function insertarX(evento) {
-    let imagen = evento.target;
+  function insertarX(event) {
+    playCounter = playCounter + 1;
+    const image = event.target;
+    const imageAttributes = image.getAttribute("class");
+    let movementPosition = imageAttributes.split("-");
+    let row = movementPosition[1];
+    let column = movementPosition[2];
 
-    if (imagen.hasAttribute("src")) {
-      alert("La columna ya esta en uso");
-    } else {
-      if (turno == jugador1) {
-        imagen.style.opacity = "1";
-        imagen.src = "x-icon.png";
-        turno = jugador2;
+    if (winnerMessage == "") {
+      if (image.hasAttribute("src")) {
+        alert("La columna ya esta en uso");
       } else {
-        imagen.style.opacity = "1";
-        imagen.src = "o2-icon.png";
-        turno = jugador1;
+        if (player == player1) {
+          image.style.opacity = "1";
+          image.src = "x-icon.png";
+          player = player2;
+          scores[row][column] = "X";
+          winnerMessage = getWinnerMessage(scores);
+        } else {
+          image.style.opacity = "1";
+          image.src = "o2-icon.png";
+          player = player1;
+          scores[row][column] = "O";
+          winnerMessage = getWinnerMessage(scores);
+        }
+        if (winnerMessage) {
+          var exposeWinner = document.querySelector(".winner");
+          var winnerText = document.createTextNode(winnerMessage);
+          exposeWinner.appendChild(winnerText);
+        }
+      }
+    }
+    if (playCounter == positionsCunter) {
+      if (winnerMessage == "") {
+        var exposeWinner = document.querySelector(".winner");
+        var winnerText = document.createTextNode("NO HAY UN GANADOR");
+        exposeWinner.appendChild(winnerText);
       }
     }
   }

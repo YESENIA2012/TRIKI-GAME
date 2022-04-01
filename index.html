@@ -13,6 +13,7 @@
     <body>
         <header>
             <h1 id="title">BIENVENIDO A MI JUEGO</h1>
+            <h3 class="winner"></h3>
         </header>
         <div id="draw-table">
             <div class="draw-table">
@@ -22,13 +23,12 @@
                 <input type="number" id="rows" name="numRows">
                 <label for="columns">Número de columnas</label>
                 <input type="number" id="columns" name="numColumns">
-                <button type="button" onclick="matriz()">Insertar</button>
+                <button id="button" type="button" onclick="matriz(), removeButtom()">Insertar</button>
                 </form>
                 <div class="players"></div>
             </div>
             <section class="table">
                 <div class="father"></div>
-                <h3 class="winner"></h4>
             </section>
         </div>
         <script src="utils.js"></script>

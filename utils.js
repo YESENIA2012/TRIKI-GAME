@@ -51,6 +51,7 @@ function drawGame(numRows, numColumns) {
   }
   return { scoresMatriz: scoresMatriz, positionsCunter: positionsCunter };
 }
+
 function findWinnerInDiagonals(scores) {
   let winner = false;
   let counterX = 0;
@@ -209,4 +210,8 @@ function getWinnerMessage(scores) {
     }
   }
   return "";
+}
+
+function removeButtom() {
+  document.getElementById("button").style.display = "none";
 }

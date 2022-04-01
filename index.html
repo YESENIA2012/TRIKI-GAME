@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Matriz</title>
+        <title>TIC TAC TOE GAME</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap" rel="stylesheet">
@@ -11,33 +11,26 @@
         
     </head>
     <body>
-
-        <h1 id="title">BIENVENIDO A MI JUEGO</h1>
-        <h2>Vamos a jugar</h2>
-       
-
-        <div class="players"></div>
-        <br>
-        <br>
-
-        <form class="onclick">
-            <label for="rows">Inserte el número de filas</label>
-            <input type="number" id="rows" name="numRows">
-            <br>
-            <label for="columns">Insete el número de columnas</label>
-            <input type="number" id="columns" name="numColumns">
-            <br>
-            <button type="button" onclick="matriz()">Insertar</button>
-        </form>
-        <br>
-        <br>
-
-        <h3 class="winner"></h4>
-        <br>
-        <br>
-
-        <div class="father"></div>
-    
+        <header>
+            <h1 id="title">BIENVENIDO A MI JUEGO</h1>
+        </header>
+        <div id="draw-table">
+            <div class="draw-table">
+                <h2>Vamos a jugar</h2>
+                <form class="onclick">
+                <label for="rows">Número de filas</label>
+                <input type="number" id="rows" name="numRows">
+                <label for="columns">Número de columnas</label>
+                <input type="number" id="columns" name="numColumns">
+                <button type="button" onclick="matriz()">Insertar</button>
+                </form>
+                <div class="players"></div>
+            </div>
+            <section class="table">
+                <div class="father"></div>
+                <h3 class="winner"></h4>
+            </section>
+        </div>
         <script src="utils.js"></script>
         <script src="script.js"></script>
     </body>

@@ -48,6 +48,7 @@ function matriz() {
           var exposeWinner = document.querySelector(".winner");
           var winnerText = document.createTextNode(winnerMessage);
           exposeWinner.appendChild(winnerText);
+          document.getElementById("title").style.display = "none";
         }
       }
     }

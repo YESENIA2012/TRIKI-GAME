@@ -1,36 +1,83 @@
+body {
+  font-family: "Henny Penny", cursive;
+}
 h1 {
   font-size: 60px;
   color: black;
-  font-family: "Henny Penny", cursive;
   text-align: center;
 }
+
+header {
+  margin-bottom: 70px;
+}
+
+.draw-table {
+  display: grid;
+  grid-template-rows: 0.3fr;
+  width: 90%;
+  height: 400px;
+  padding-left: 130px;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 0.3fr 0.1fr;
+  justify-content: center;
+  height: fit-content;
+}
+
+section {
+  display: grid;
+  margin-right: 200px;
+}
+
+#draw-table {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+}
+
 h2 {
   color: black;
   font-size: 50px;
-  font-family: "Henny Penny", cursive;
-  text-align: left;
+  text-align: center;
+  margin-top: 0;
 }
+
+.players {
+  display: grid;
+  grid-template-columns: 0.4fr 0.3fr;
+  justify-content: center;
+}
+
 .player1 {
-  font-family: "Henny Penny", cursive;
   display: inline-block;
   margin-right: 30px;
   font-size: 30px;
 }
 .player2 {
-  font-family: "Henny Penny", cursive;
   display: inline-block;
   font-size: 30px;
 }
 .winner {
   font-size: 60px;
   color: black;
-  font-family: "Henny Penny", cursive;
   text-align: center;
 }
 
 input[type="number"] {
   width: 40px;
+  height: 15px;
+  font-size: 16px;
 }
+
+button {
+  background-color: white;
+  border: none;
+  font-family: "Henny Penny", cursive;
+  height: 25px;
+  font-size: 16px;
+}
+
 .row {
   text-align: center;
 }

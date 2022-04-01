@@ -54,6 +54,7 @@ h2 {
   margin-right: 30px;
   font-size: 30px;
 }
+
 .player2 {
   display: inline-block;
   font-size: 30px;
@@ -107,5 +108,45 @@ button {
   }
   to {
     opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  #draw-table {
+    grid-template-columns: 2fr;
+  }
+  .draw-table {
+    width: 100%;
+    padding-left: 0;
+  }
+  form {
+    grid-template-columns: 0.2fr 0.1fr;
+  }
+  .players {
+    grid-template-columns: 0.3fr 0.3fr;
+    margin-left: 90px;
+  }
+  section {
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1000px) {
+  #draw-table {
+    grid-template-columns: 2fr;
+  }
+  .draw-table {
+    width: 100%;
+    padding-left: 0;
+  }
+  form {
+    grid-template-columns: 0.2fr 0.1fr;
+  }
+  .players {
+    grid-template-columns: 0.3fr 0.3fr;
+    margin-left: 90px;
+  }
+  section {
+    margin-right: 0;
   }
 }

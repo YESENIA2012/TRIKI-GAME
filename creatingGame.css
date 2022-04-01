@@ -1,14 +1,14 @@
 body {
+  display: grid;
   font-family: "Henny Penny", cursive;
+  margin: 0;
 }
-h1 {
+
+#title {
   font-size: 60px;
   color: black;
   text-align: center;
-}
-
-header {
-  margin-bottom: 70px;
+  animation: fadeIn 2s;
 }
 
 .draw-table {
@@ -58,10 +58,12 @@ h2 {
   display: inline-block;
   font-size: 30px;
 }
+
 .winner {
   font-size: 60px;
   color: black;
   text-align: center;
+  animation: fadeIn 2s;
 }
 
 input[type="number"] {
@@ -97,4 +99,13 @@ button {
   padding-left: 10px;
   object-fit: cover;
   opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

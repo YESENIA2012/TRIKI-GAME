@@ -2,11 +2,12 @@ body {
   display: grid;
   font-family: "Henny Penny", cursive;
   margin: 0;
+  background-color: #f2ebe5;
+  color: #647295;
 }
 
 #title {
   font-size: 60px;
-  color: black;
   text-align: center;
   animation: fadeIn 2s;
 }
@@ -37,7 +38,7 @@ section {
 }
 
 h2 {
-  color: black;
+  color: #647295;
   font-size: 50px;
   text-align: center;
   margin-top: 0;
@@ -71,14 +72,23 @@ input[type="number"] {
   width: 40px;
   height: 15px;
   font-size: 16px;
+  color: #9f496e;
+}
+
+input[type="number"]:hover {
+  background-color: #f2ebe5;
 }
 
 button {
-  background-color: white;
   border: none;
   font-family: "Henny Penny", cursive;
   height: 25px;
   font-size: 16px;
+  color: #9f496e;
+}
+
+button:hover {
+  background-color: #647295;
 }
 
 .row {
@@ -87,7 +97,7 @@ button {
 .column {
   height: 120px;
   width: 120px;
-  border: 5px solid black;
+  border: 5px solid #2b262d;
   display: inline-block;
 }
 

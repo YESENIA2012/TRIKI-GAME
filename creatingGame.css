@@ -10,6 +10,7 @@ body {
   font-size: 60px;
   text-align: center;
   animation: fadeIn 2s;
+  color: #9f496e;
 }
 
 .draw-table {
@@ -54,16 +55,18 @@ h2 {
   display: inline-block;
   margin-right: 30px;
   font-size: 30px;
+  color: #9f496e;
 }
 
 .player2 {
   display: inline-block;
   font-size: 30px;
+  color: #9f496e;
 }
 
 .winner {
   font-size: 60px;
-  color: black;
+  color: #647295;
   text-align: center;
   animation: fadeIn 2s;
 }
